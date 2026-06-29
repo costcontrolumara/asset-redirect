@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Membuka Data Aset...</title>
 
-    <script>
-        // Ambil ID dari URL
-        const id = window.location.pathname.replace("/", "");
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        // URL Apps Script
-        const baseUrl = "https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec";
+<title>Log Book Aset</title>
 
-        if(id){
-            window.location.href = baseUrl + "?id=" + encodeURIComponent(id);
-        }else{
-            document.addEventListener("DOMContentLoaded", () => {
-                document.getElementById("status").innerHTML =
-                    "<h2>ID aset tidak ditemukan.</h2>";
-            });
-        }
-    </script>
+<link rel="stylesheet" href="style.css">
 
 </head>
-<body style="font-family:Arial;text-align:center;padding-top:80px">
 
-<h2 id="status">Membuka data aset...</h2>
+<body>
+
+<div class="card">
+
+<h2>Informasi Aset</h2>
+
+<img id="foto" src="" alt="Foto Aset">
+
+<h3 id="nama">Loading...</h3>
+
+<p><b>Nomor QR :</b> <span id="qr"></span></p>
+
+<p><b>Kategori :</b> <span id="kategori"></span></p>
+
+<p><b>Jumlah :</b> <span id="jumlah"></span></p>
+
+<p><b>Lokasi :</b> <span id="lokasi"></span></p>
+
+</div>
+
+<script src="app.js"></script>
 
 </body>
 </html>
