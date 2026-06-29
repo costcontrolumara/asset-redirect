@@ -1,112 +1,83 @@
 // =========================
 // KONFIGURASI API
 // =========================
-
 const API_URL =
 "https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec";
-
 
 // =========================
 // AMBIL PARAMETER ID
 // =========================
-
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-
 // =========================
-// JIKA TIDAK ADA ID
+// CEK ID
 // =========================
-
-if(!id){
-
-    document.getElementById("nama").innerHTML="ID Aset tidak ditemukan";
+if (!id) {
+    document.getElementById("nama").textContent = "ID Aset tidak ditemukan";
     throw new Error("ID kosong");
-
 }
-
 
 // =========================
 // LOADING
 // =========================
-
-document.getElementById("nama").innerHTML="Memuat data...";
-
+document.getElementById("nama").textContent = "Memuat data...";
 
 // =========================
-// REQUEST API
+// REQUEST DATA
 // =========================
-
 fetch(`${API_URL}?id=${encodeURIComponent(id)}&api=1`)
+.then(response => response.json())
+.then(data => {
 
-.then(response=>response.json())
-
-.then(data=>{
-
-    if(data==null){
-
-        document.getElementById("nama").innerHTML="Aset tidak ditemukan";
+    if (!data) {
+        document.getElementById("nama").textContent = "Aset tidak ditemukan";
         return;
-
     }
 
-    // =====================
+    console.log(data);
+
+    // =========================
     // FOTO
-    // =====================
+    // =========================
 
-    const foto=document.getElementById("foto");
+    const foto = document.getElementById("foto");
 
-    if(data.linkPhoto){
+    if (data.linkPhoto && data.linkPhoto.trim() !== "") {
 
-        let url=data.linkPhoto;
+        console.log("Foto :", data.linkPhoto);
 
-        // Google Drive
-        if(url.includes("drive.google.com")){
+        foto.src = data.linkPhoto;
 
-            const match=url.match(/\/d\/([^\/]+)/);
+        foto.onerror = function () {
+            console.log("Gagal memuat gambar.");
+            this.src = "https://placehold.co/600x400?text=No+Image";
+        };
 
-            if(match){
+    } else {
 
-                url=`https://drive.google.com/uc?export=view&id=${match[1]}`;
-
-            }
-
-        }
-
-        foto.src=url;
-
-    }else{
-
-        foto.src="https://placehold.co/600x400?text=No+Image";
+        foto.src = "https://placehold.co/600x400?text=No+Image";
 
     }
 
-
-    // =====================
+    // =========================
     // DATA
-    // =====================
+    // =========================
 
-    document.getElementById("qr").innerHTML=data.nomorQR ?? "-";
-
-    document.getElementById("nama").innerHTML=data.nama || "Tanpa Nama";
-
-    document.getElementById("kategori").innerHTML=data.kategori || "-";
-
-    document.getElementById("jumlah").innerHTML=
+    document.getElementById("qr").textContent = data.nomorQR || "-";
+    document.getElementById("nama").textContent = data.nama || "Tanpa Nama";
+    document.getElementById("kategori").textContent = data.kategori || "-";
+    document.getElementById("jumlah").textContent =
         `${data.jumlah || "-"} ${data.satuan || ""}`;
-
-    document.getElementById("area").innerHTML=data.area || "-";
-
-    document.getElementById("lokasi").innerHTML=data.lokasi || "-";
-
-    document.getElementById("keadaan").innerHTML=data.keadaan || "-";
+    document.getElementById("area").textContent = data.area || "-";
+    document.getElementById("lokasi").textContent = data.lokasi || "-";
+    document.getElementById("keadaan").textContent = data.keadaan || "-";
 
 })
-
-.catch(error=>{
+.catch(error => {
 
     console.error(error);
 
-    document.getElementById("nama").innerHTML="Terjadi Kesalahan";
+    document.getElementById("nama").textContent = "Terjadi Kesalahan";
 
 });
