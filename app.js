@@ -1,34 +1,112 @@
+// =========================
+// KONFIGURASI API
+// =========================
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec";
+
+
+// =========================
+// AMBIL PARAMETER ID
+// =========================
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-if (!id) {
-    document.getElementById("nama").innerText = "ID aset tidak ditemukan";
-    throw new Error("ID tidak ditemukan");
+
+// =========================
+// JIKA TIDAK ADA ID
+// =========================
+
+if(!id){
+
+    document.getElementById("nama").innerHTML="ID Aset tidak ditemukan";
+    throw new Error("ID kosong");
+
 }
 
-const api =
-"https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec?id="
-+ encodeURIComponent(id)
-+ "&api=1";
 
-fetch(api)
-.then(res => res.json())
-.then(data => {
+// =========================
+// LOADING
+// =========================
 
-    document.getElementById("qr").innerText = data.nomorQR || "-";
-    document.getElementById("nama").innerText = data.nama || "-";
-    document.getElementById("kategori").innerText = data.kategori || "-";
-    document.getElementById("jumlah").innerText = data.jumlah || "-";
-    document.getElementById("lokasi").innerText = data.lokasi || "-";
+document.getElementById("nama").innerHTML="Memuat data...";
 
-    if(data.linkPhoto){
-        document.getElementById("foto").src = data.linkPhoto;
-    }else{
-        document.getElementById("foto").style.display="none";
+
+// =========================
+// REQUEST API
+// =========================
+
+fetch(`${API_URL}?id=${encodeURIComponent(id)}&api=1`)
+
+.then(response=>response.json())
+
+.then(data=>{
+
+    if(data==null){
+
+        document.getElementById("nama").innerHTML="Aset tidak ditemukan";
+        return;
+
     }
 
+    // =====================
+    // FOTO
+    // =====================
+
+    const foto=document.getElementById("foto");
+
+    if(data.linkPhoto){
+
+        let url=data.linkPhoto;
+
+        // Google Drive
+        if(url.includes("drive.google.com")){
+
+            const match=url.match(/\/d\/([^\/]+)/);
+
+            if(match){
+
+                url=`https://drive.google.com/uc?export=view&id=${match[1]}`;
+
+            }
+
+        }
+
+        foto.src=url;
+
+    }else{
+
+        foto.src="https://placehold.co/600x400?text=No+Image";
+
+    }
+
+
+    // =====================
+    // DATA
+    // =====================
+
+    document.getElementById("qr").innerHTML=data.nomorQR ?? "-";
+
+    document.getElementById("nama").innerHTML=data.nama || "Tanpa Nama";
+
+    document.getElementById("kategori").innerHTML=data.kategori || "-";
+
+    document.getElementById("jumlah").innerHTML=
+        `${data.jumlah || "-"} ${data.satuan || ""}`;
+
+    document.getElementById("area").innerHTML=data.area || "-";
+
+    document.getElementById("lokasi").innerHTML=data.lokasi || "-";
+
+    document.getElementById("keadaan").innerHTML=data.keadaan || "-";
+
 })
-.catch(err=>{
-    document.getElementById("nama").innerText="Gagal mengambil data";
-    console.error(err);
+
+.catch(error=>{
+
+    console.error(error);
+
+    document.getElementById("nama").innerHTML="Terjadi Kesalahan";
+
 });
