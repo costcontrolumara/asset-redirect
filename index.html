@@ -2,20 +2,30 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Log Book Aset</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membuka Data Aset...</title>
 
     <script>
+        // Ambil ID dari URL
         const id = window.location.pathname.replace("/", "");
 
-        window.location.replace(
-            "https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec?id=" + id
-        );
+        // URL Apps Script
+        const baseUrl = "https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec";
+
+        if(id){
+            window.location.href = baseUrl + "?id=" + encodeURIComponent(id);
+        }else{
+            document.addEventListener("DOMContentLoaded", () => {
+                document.getElementById("status").innerHTML =
+                    "<h2>ID aset tidak ditemukan.</h2>";
+            });
+        }
     </script>
+
 </head>
+<body style="font-family:Arial;text-align:center;padding-top:80px">
 
-<body>
-
-Sedang membuka data aset...
+<h2 id="status">Membuka data aset...</h2>
 
 </body>
 </html>
