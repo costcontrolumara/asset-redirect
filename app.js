@@ -81,5 +81,3 @@ fetch(`${API_URL}?id=${encodeURIComponent(id)}&api=1`)
     document.getElementById("nama").textContent = "Terjadi Kesalahan";
 
 });
-
-kalau terjadi kesalahan bagaimana solved nya
