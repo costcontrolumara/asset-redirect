@@ -1,17 +1,14 @@
-
 <!DOCTYPE html>
-
 <html lang="id">
 
 <head>
 
-<meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log Book Aset</title>
 
-<title>Log Book Aset</title>
-
-<link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -19,46 +16,106 @@
 
 <div class="container">
 
-<div class="card">
+    <div class="card">
 
-<div class="header">INFORMASI ASET</div>
+        <div class="header">
+            INFORMASI ASET
+        </div>
 
-<div class="content">
+        <div class="content">
 
-<div class="image-box">
+            <!-- FOTO -->
 
-<img id="foto" src="" alt="Foto Aset" />
+            <div class="image-box">
+                <img id="foto" src="" alt="Foto Aset">
+            </div>
 
-</div>
+            <!-- HEADER -->
 
-<p class="subtitle">Nomor QR: <span id="qr">-</span></p>
+            <div class="asset-header">
 
-<h1 id="nama" class="title">Memuat data...</h1>
+                <div class="qr-number">
+                    Nomor QR :
+                    <span id="qr">-</span>
+                </div>
 
-<div class="info-list">
+                <h1 id="nama" class="title">
+                    Memuat Data...
+                </h1>
 
-<div class="info-item"><span>📦 Jumlah</span><strong id="jumlah">-</strong></div>
+                <div id="kategori" class="category-badge">
+                    -
+                </div>
 
-<div class="info-item"><span>🏷️ Kategori</span><strong id="kategori">-</strong></div>
+            </div>
 
-<div class="info-item"><span>📍 Area</span><strong id="area">-</strong></div>
+            <!-- DATA UTAMA -->
 
-<div class="info-item"><span>📌 Lokasi</span><strong id="lokasi">-</strong></div>
+            <div class="section-title">
+                Informasi Barang
+            </div>
 
-<div class="info-item"><span>✔ Keadaan</span><strong id="keadaan">-</strong></div>
+            <div class="info-list">
 
-</div>
+                <div class="info-item">
+                    <span>📦 Jumlah</span>
+                    <strong id="jumlah">-</strong>
+                </div>
 
-<button class="btn">Lihat Data Internal</button>
+                <div class="info-item" id="merkRow">
+                    <span>🏷 Merk</span>
+                    <strong id="merk">-</strong>
+                </div>
 
-</div>
+                <div class="info-item" id="serialRow">
+                    <span>🔢 Serial Number</span>
+                    <strong id="serialNumber">-</strong>
+                </div>
 
-</div>
+                <div class="info-item" id="dimensiRow">
+                    <span>📐 Dimensi</span>
+                    <strong id="dimensi">-</strong>
+                </div>
+
+                <div class="info-item" id="warnaRow">
+                    <span>🎨 Warna</span>
+                    <strong id="warna">-</strong>
+                </div>
+
+            </div>
+
+            <!-- LOKASI -->
+
+            <div class="section-title">
+                Lokasi & Kondisi
+            </div>
+
+            <div class="info-list">
+
+                <div class="info-item">
+                    <span>📍 Area</span>
+                    <strong id="area">-</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>📌 Lokasi</span>
+                    <strong id="lokasi">-</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>✔ Keadaan</span>
+                    <strong id="keadaan">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
 <script src="app.js"></script>
 
 </body>
-
 </html>
