@@ -1,6 +1,6 @@
-/* ==========================
+/* =====================================================
    RESET
-========================== */
+===================================================== */
 
 *{
     margin:0;
@@ -11,181 +11,294 @@
 body{
     font-family:"Segoe UI", Arial, sans-serif;
     background:#eef3f8;
+    color:#333;
     display:flex;
     justify-content:center;
     align-items:flex-start;
     min-height:100vh;
     padding:25px;
-    color:#333;
 }
 
-/* ==========================
+/* =====================================================
    CONTAINER
-========================== */
+===================================================== */
 
 .container{
     width:100%;
-    max-width:430px;
+    max-width:460px;
 }
 
 .card{
     background:#fff;
     border-radius:18px;
     overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    box-shadow:0 12px 30px rgba(0,0,0,.10);
 }
 
-/* ==========================
+/* =====================================================
    HEADER
-========================== */
+===================================================== */
 
 .header{
     background:#0056b3;
     color:#fff;
     text-align:center;
+    padding:18px;
     font-size:22px;
     font-weight:700;
-    letter-spacing:1px;
-    padding:18px;
+    letter-spacing:.8px;
 }
 
-/* ==========================
+/* =====================================================
    CONTENT
-========================== */
+===================================================== */
 
 .content{
-    padding:20px;
+    padding:22px;
 }
 
-/* ==========================
+/* =====================================================
    FOTO
-========================== */
+===================================================== */
 
 .image-box{
-    width:100%;
     background:#edf5ff;
     border-radius:14px;
-    padding:10px;
-    margin-bottom:22px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    padding:12px;
+    margin-bottom:20px;
 }
 
 .image-box img{
 
     width:100%;
-    height:auto;
+    height:300px;
 
-    max-height:420px;
+    object-fit:contain;
 
     display:block;
 
     border-radius:10px;
 
-    object-fit:contain;
-
-    background:#fff;
+    background:white;
 
 }
 
-/* ==========================
-   TEXT
-========================== */
+/* =====================================================
+   JUDUL
+===================================================== */
 
 .subtitle{
+
     text-align:center;
+
     color:#777;
+
     font-size:14px;
+
     margin-bottom:6px;
+
 }
 
 .title{
+
     text-align:center;
+
     color:#222;
+
     font-size:30px;
+
     font-weight:700;
+
     margin-bottom:25px;
+
     word-break:break-word;
+
 }
 
-/* ==========================
+/* =====================================================
    INFO
-========================== */
+===================================================== */
 
 .info-list{
+
     display:flex;
+
     flex-direction:column;
-    gap:12px;
+
 }
 
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title{
+
+    margin-top:24px;
+
+    margin-bottom:8px;
+
+    padding-bottom:6px;
+
+    border-bottom:2px solid #d9e7ff;
+
+    color:#0056b3;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+.section-title:first-child{
+
+    margin-top:0;
+
+}
+
+/* =====================================================
+   ITEM
+===================================================== */
+
 .info-item{
+
     display:flex;
+
     justify-content:space-between;
-    align-items:center;
-    background:#f8f9fb;
-    border-radius:10px;
-    padding:14px 16px;
+
+    align-items:flex-start;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #ececec;
+
+    gap:20px;
+
+}
+
+.info-item:last-child{
+
+    border-bottom:none;
+
 }
 
 .info-item span{
-    color:#555;
+
+    color:#666;
+
+    font-size:14px;
+
     font-weight:600;
+
 }
 
 .info-item strong{
+
     color:#222;
+
+    font-size:14px;
+
+    font-weight:600;
+
     text-align:right;
-    max-width:60%;
+
+    max-width:55%;
+
     word-break:break-word;
+
 }
 
-/* ==========================
+/* =====================================================
    BUTTON
-========================== */
+===================================================== */
 
 .btn{
+
     width:100%;
-    margin-top:25px;
+
+    margin-top:30px;
+
     padding:15px;
+
     border:none;
+
     border-radius:10px;
+
     background:#0056b3;
-    color:#fff;
+
+    color:white;
+
     font-size:16px;
-    font-weight:bold;
+
+    font-weight:700;
+
     cursor:pointer;
+
     transition:.25s;
+
 }
 
 .btn:hover{
+
     background:#00418a;
+
+    transform:translateY(-1px);
+
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
+.btn:active{
 
-@media(max-width:480px){
+    transform:translateY(0);
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width:480px){
 
     body{
+
         padding:12px;
+
     }
 
     .content{
-        padding:16px;
+
+        padding:18px;
+
     }
 
     .header{
+
         font-size:20px;
+
     }
 
     .title{
+
         font-size:24px;
+
     }
 
     .image-box img{
-        max-height:320px;
+
+        height:240px;
+
+    }
+
+    .info-item{
+
+        gap:10px;
+
+    }
+
+    .info-item strong{
+
+        max-width:50%;
+
+        font-size:13px;
+
     }
 
 }
