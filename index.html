@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Log Book Aset</title>
+    <title>Log Book Asset</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -19,7 +19,6 @@
     <div class="card">
 
         <!-- HEADER -->
-
         <div class="header">
             INFORMASI ASET
         </div>
@@ -27,36 +26,32 @@
         <div class="content">
 
             <!-- FOTO -->
-
             <div class="image-box">
-                <img id="foto" src="" alt="Foto Aset">
+                <img id="foto" src="" alt="Foto Asset">
             </div>
 
-            <!-- HEADER DATA -->
-
+            <!-- IDENTITAS ASET -->
             <div class="asset-header">
 
-                <div class="qr-number">
-                    Nomor QR :
-                    <span id="qr">-</span>
-                </div>
-
-                <h1 id="nama" class="title">
-                    Memuat Data...
-                </h1>
-
-                <div id="kategori" class="category-badge">
+                <div class="category-badge" id="kategori">
                     -
                 </div>
 
+                <h1 class="title" id="nama">
+                    Memuat Data...
+                </h1>
+
+                <div class="qr-number">
+                    Nomor QR :
+                    <strong id="qr">-</strong>
+                </div>
+
             </div>
 
-            <!-- ========================= -->
             <!-- INFORMASI BARANG -->
-            <!-- ========================= -->
 
             <div class="section-title">
-                Informasi Barang
+                INFORMASI BARANG
             </div>
 
             <div class="info-list">
@@ -66,51 +61,32 @@
                     <strong id="jumlah">-</strong>
                 </div>
 
-                <div class="info-item">
-                    <span>Kategori</span>
-                    <strong id="kategoriInfo">-</strong>
-                </div>
-
-            </div>
-
-            <!-- ========================= -->
-            <!-- SPESIFIKASI -->
-            <!-- ========================= -->
-
-            <div class="section-title">
-                Spesifikasi
-            </div>
-
-            <div class="info-list">
-
-                <div class="info-item">
+                <div class="info-item" id="merkRow">
                     <span>Merk</span>
                     <strong id="merk">-</strong>
                 </div>
 
-                <div class="info-item">
+                <div class="info-item" id="serialRow">
                     <span>Serial Number</span>
                     <strong id="serialNumber">-</strong>
                 </div>
 
-                <div class="info-item">
+                <div class="info-item" id="dimensiRow">
                     <span>Dimensi</span>
                     <strong id="dimensi">-</strong>
                 </div>
 
-                <div class="info-item">
+                <div class="info-item" id="warnaRow">
                     <span>Warna</span>
                     <strong id="warna">-</strong>
                 </div>
 
             </div>
 
-            <!-- ========================= -->
-            <!-- LOKASI & KONDISI -->
-            <!-- ========================= -->
+            <!-- LOKASI -->
 
             <div class="section-title">
-                Lokasi & Kondisi
+                LOKASI & KONDISISI
             </div>
 
             <div class="info-list">
@@ -132,12 +108,6 @@
 
             </div>
 
-            <!-- BUTTON -->
-
-            <button class="btn" id="btnLogin">
-                Lihat Data Internal
-            </button>
-
         </div>
 
     </div>
@@ -147,4 +117,5 @@
 <script src="app.js"></script>
 
 </body>
+
 </html>
