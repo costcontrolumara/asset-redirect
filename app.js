@@ -1,20 +1,41 @@
 // =====================================================
 // KONFIGURASI API
 // =====================================================
+
 const API_URL =
   "https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec";
 
 
 // =====================================================
+// TOMBOL LIHAT DATA INTERNAL
+// =====================================================
+
+const btnInternal = document.getElementById("btnInternal");
+
+if (btnInternal) {
+
+    btnInternal.addEventListener("click", function () {
+
+        window.location.href = API_URL;
+
+    });
+
+}
+
+
+// =====================================================
 // AMBIL PARAMETER ID
 // =====================================================
+
 const params = new URLSearchParams(window.location.search);
+
 const id = params.get("id");
 
 
 // =====================================================
 // CEK ID
 // =====================================================
+
 if (!id) {
 
     document.getElementById("nama").textContent =
@@ -28,6 +49,7 @@ if (!id) {
 // =====================================================
 // LOADING
 // =====================================================
+
 document.getElementById("nama").textContent =
     "Memuat data...";
 
@@ -35,6 +57,7 @@ document.getElementById("nama").textContent =
 // =====================================================
 // REQUEST DATA
 // =====================================================
+
 fetch(`${API_URL}?id=${encodeURIComponent(id)}&api=1`)
 
 .then(response => response.json())
