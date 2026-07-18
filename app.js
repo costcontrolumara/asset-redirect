@@ -3,7 +3,7 @@
 // =====================================================
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec";
+"https://script.google.com/macros/s/AKfycbzWd7pEwjJY14EI4VWDFMoJrAlzdLl549iKR6jtnvqh3g0i9WffkYp07LXuIkACb5zLZA/exec";
 
 
 // =====================================================
@@ -39,7 +39,7 @@ const id = params.get("id");
 if (!id) {
 
     document.getElementById("nama").textContent =
-        "ID Aset tidak ditemukan";
+        "ID Asset tidak ditemukan";
 
     throw new Error("ID kosong");
 
@@ -67,14 +67,13 @@ fetch(`${API_URL}?id=${encodeURIComponent(id)}&api=1`)
     if (!data) {
 
         document.getElementById("nama").textContent =
-            "Aset tidak ditemukan";
+            "Asset tidak ditemukan";
 
         return;
 
     }
 
     console.log("Data Asset :", data);
-
 
     // =====================================================
     // FOTO
@@ -88,20 +87,17 @@ fetch(`${API_URL}?id=${encodeURIComponent(id)}&api=1`)
 
         foto.onerror = function () {
 
-            console.log("Foto gagal dimuat.");
-
             this.src =
-                "https://placehold.co/600x400?text=No+Image";
+            "https://placehold.co/600x400?text=No+Image";
 
         };
 
     } else {
 
         foto.src =
-            "https://placehold.co/600x400?text=No+Image";
+        "https://placehold.co/600x400?text=No+Image";
 
     }
-
 
     // =====================================================
     // INFORMASI ASET
@@ -119,23 +115,33 @@ fetch(`${API_URL}?id=${encodeURIComponent(id)}&api=1`)
     document.getElementById("jumlah").textContent =
         `${data.jumlah || "-"} ${data.satuan || ""}`;
 
-
     // =====================================================
     // SPESIFIKASI
     // =====================================================
 
-    document.getElementById("merk").textContent =
-        data.merk || "-";
+    if(document.getElementById("merk"))
+        document.getElementById("merk").textContent =
+            data.merk || "-";
 
-    document.getElementById("serialNumber").textContent =
-        data.serialNumber || "-";
+    if(document.getElementById("serialNumber"))
+        document.getElementById("serialNumber").textContent =
+            data.serialNumber || "-";
 
-    document.getElementById("dimensi").textContent =
-        data.dimensi || "-";
+    if(document.getElementById("tahunPengadaan"))
+        document.getElementById("tahunPengadaan").textContent =
+            data.tahunPengadaan || "-";
 
-    document.getElementById("warna").textContent =
-        data.warna || "-";
+    if(document.getElementById("pic"))
+        document.getElementById("pic").textContent =
+            data.pic || "-";
 
+    if(document.getElementById("dimensi"))
+        document.getElementById("dimensi").textContent =
+            data.dimensi || "-";
+
+    if(document.getElementById("warna"))
+        document.getElementById("warna").textContent =
+            data.warna || "-";
 
     // =====================================================
     // LOKASI
@@ -146,7 +152,6 @@ fetch(`${API_URL}?id=${encodeURIComponent(id)}&api=1`)
 
     document.getElementById("lokasi").textContent =
         data.lokasi || "-";
-
 
     // =====================================================
     // KONDISI
